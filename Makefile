@@ -36,11 +36,11 @@ OBJS += loop.o
 endif
 
 ifndef DUMMY
-FFDIR ?= ffmpeg
-FFSRC ?= $(FFDIR)
+FFDIR ?= /usr/local/lib/ffmpeg2
+FFSRC ?= /usr/local/include/ffmpeg2
 OBJS += Chunkiser/input-stream-avs.o
-LDFLAGS += -L$(FFDIR)/libavcodec -L$(FFDIR)/libavformat -L$(FFDIR)/libavutil
-LDLIBS += -lavformat -lavcodec -lavutil
+LDFLAGS += -L$(FFDIR)
+LDLIBS += -lavformat2 -lavcodec2 -lavutil2
 LDLIBS += -lm
 LDLIBS += $(call ld-option, -lz)
 LDLIBS += $(call ld-option, -lbz2)
@@ -64,9 +64,9 @@ ffmpeg:
 	(wget http://ffmpeg.org/releases/ffmpeg-checkout-snapshot.tar.bz2; tar xjf ffmpeg-checkout-snapshot.tar.bz2; mv ffmpeg-checkout-20* ffmpeg) || svn checkout svn://svn.ffmpeg.org/ffmpeg/trunk ffmpeg
 	cd ffmpeg; ./configure
 
-prepare: $(GRAPES) $(FFSRC)
-	$(MAKE) -C $(GRAPES)/som
-	$(MAKE) -C $(FFSRC)
+prepare: $(GRAPES) #$(FFSRC)
+	gmake -C $(GRAPES)/som
+#	gmake -C $(FFSRC)
 
 clean:
 	rm -f $(EXECTARGET)

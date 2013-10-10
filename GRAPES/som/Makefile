@@ -4,7 +4,7 @@ SUBDIRS = ChunkIDSet ChunkTrading TopologyManager ChunkBuffer PeerSet Scheduler
      
 all:
 	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir; \
+		gmake -C $$dir; \
 	done
 
 tests: all
@@ -12,9 +12,9 @@ tests: all
 
 clean:
 	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir clean; \
+		gmake -C $$dir clean; \
 	done
 
 allclean: clean
 	rm -f *.o
-	make -C Tests clean
+	gmake -C Tests clean

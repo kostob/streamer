@@ -45,12 +45,17 @@ static void cmdline_parse(int argc, char *argv[])
         period = atoi(optarg);
         break;
       case 'p':
+		// This is the port of the source.
         srv_port = atoi(optarg);
         break;
       case 'i':
+		// This is the IP of the source.
         srv_ip = strdup(optarg);
         break;
       case 'P':
+		// This is the local port used by the client. Default is 6666.
+		// If testing multiple clients on the same machine, every client
+		// has to use a diffenrent port number.
         port =  atoi(optarg);
         break;
       case 'I':
