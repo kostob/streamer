@@ -27,6 +27,8 @@ LDFLAGS = -L$(GRAPES)/som/TopologyManager -L$(GRAPES)/som/ChunkTrading -L$(GRAPE
 LDLIBS = -ltrading -lcb -ltopman -lsched -lpeerset -lsignalling
 
 OBJS = dumbstreamer.o streaming.o topology.o output.o net_helpers.o input.o chunk_signaling.o out-stream.o
+
+# to use threads, compile with: gmake THREADS=YesPlease
 ifdef THREADS
 OBJS += loop-mt.o
 CFLAGS += -pthread
@@ -35,6 +37,7 @@ else
 OBJS += loop.o
 endif
 
+# use dummy data instead of video: gmake DUMMY=Yes
 ifndef DUMMY
 FFDIR ?= /usr/local/lib/ffmpeg2
 FFSRC ?= /usr/local/include/ffmpeg2

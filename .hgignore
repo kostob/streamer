@@ -6,3 +6,5 @@
 ^nbproject$
 ^rockstreamer$
 ^input\.mpg$
+\.o$
+\.a$
